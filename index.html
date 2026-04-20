@@ -132,6 +132,9 @@
       padding: 56px 56px;
     }
 
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
     .section-label {
       font-size: 11px;
       font-weight: 500;
@@ -184,23 +187,30 @@
 
   <!-- GRAY NAV WITH 4 BUTTONS -->
   <nav class="nav-section">
-    <button class="nav-btn active">Overview</button>
-    <button class="nav-btn">History</button>
-    <button class="nav-btn">Rules</button>
-    <button class="nav-btn">Teams</button>
+    <button class="nav-btn active" onclick="switchTab(this,'overview')">Overview</button>
+    <button class="nav-btn" onclick="switchTab(this,'history')">History</button>
+    <button class="nav-btn" onclick="switchTab(this,'rules')">Rules</button>
+    <button class="nav-btn" onclick="switchTab(this,'teams')">Teams</button>
   </nav>
 
   <!-- CONTENT / PARAGRAPH -->
   <section class="content-section">
-    <p class="section-label">About the Sport</p>
-    <p>
-      Basketball is a fast-paced team sport played on a rectangular court where two teams
-      of five players compete to score by shooting a ball through the opponent's hoop.
-      Invented by Dr. James Naismith in 1891, the game has grown into one of the world's
-      most popular sports, with the NBA serving as its premier professional league.
-      Known for its athleticism, strategy, and electrifying moments, basketball continues
-      to captivate millions of fans across the globe.
-    </p>
+    <div id="overview" class="tab-panel active">
+      <p class="section-label">About the Sport</p>
+      <p>Basketball is a fast-paced team sport played on a rectangular court where two teams of five players compete to score by shooting a ball through the opponent's hoop. Invented by Dr. James Naismith in 1891, the game has grown into one of the world's most popular sports, with the NBA serving as its premier professional league. Known for its athleticism, strategy, and electrifying moments, basketball continues to captivate millions of fans across the globe.</p>
+    </div>
+    <div id="history" class="tab-panel">
+      <p class="section-label">History</p>
+      <p>Basketball was invented in December 1891 by Canadian-American physical education instructor Dr. James Naismith in Springfield, Massachusetts. Originally played with a soccer ball and two peach baskets, the sport quickly spread across the United States and internationally. The NBA was founded in 1946, and basketball became an Olympic sport in 1936, cementing its global legacy.</p>
+    </div>
+    <div id="rules" class="tab-panel">
+      <p class="section-label">Rules</p>
+      <p>Each team fields five players. Points are scored by shooting the ball through the opposing team's hoop — worth 2 points inside the arc, 3 points beyond it, and 1 point for free throws. Games consist of four 12-minute quarters (NBA). Players may not travel (walk without dribbling) or double-dribble. Fouls result in free throws or possession changes.</p>
+    </div>
+    <div id="teams" class="tab-panel">
+      <p class="section-label">Teams</p>
+      <p>The NBA features 30 franchises across the United States and Canada. Historic powerhouses include the Los Angeles Lakers (17 championships), Boston Celtics (18 championships), and Chicago Bulls — home of Michael Jordan's legendary dynasty in the 1990s. Today, teams like the Golden State Warriors and Boston Celtics lead the modern era of the sport.</p>
+    </div>
   </section>
 
   <!-- FOOTER STRIP -->
@@ -210,5 +220,13 @@
     <span>Sports &amp; Recreation</span>
   </footer>
 
+  <script>
+    function switchTab(btn, id) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
